@@ -1,79 +1,7 @@
 import React from "react";
+import Popup from "../popup/Popup";
 
-const products = [
-  {
-    name: 'Apple iMac 27"',
-    category: "PC",
-    brand: "Apple",
-    description: "What is a product description? A product...",
-    price: "$2999",
-  },
-  {
-    name: 'Apple iMac 20"',
-    category: "PC",
-    brand: "Apple",
-    description: "What is a product description? A product...",
-    price: "$1499",
-  },
-  {
-    name: "Apple iPhone 14",
-    category: "Phone",
-    brand: "Apple",
-    description: "What is a product description? A product...",
-    price: "$999",
-  },
-  {
-    name: "Apple iPad Air",
-    category: "Tablet",
-    brand: "Apple",
-    description: "What is a product description? A product...",
-    price: "$1199",
-  },
-  {
-    name: "Xbox Series S",
-    category: "Gaming/Console",
-    brand: "Microsoft",
-    description: "What is a product description? A product...",
-    price: "$299",
-  },
-  {
-    name: "PlayStation 5",
-    category: "Gaming/Console",
-    brand: "Sony",
-    description: "What is a product description? A product...",
-    price: "$799",
-  },
-  {
-    name: "Xbox Series X",
-    category: "Gaming/Console",
-    brand: "Microsoft",
-    description: "What is a product description? A product...",
-    price: "$699",
-  },
-  {
-    name: "Apple Watch SE",
-    category: "Watch",
-    brand: "Apple",
-    description: "What is a product description? A product...",
-    price: "$399",
-  },
-  {
-    name: "NIKON D850",
-    category: "Photo",
-    brand: "Nikon",
-    description: "What is a product description? A product...",
-    price: "$599",
-  },
-  {
-    name: "Monitor BenQ EX2710Q",
-    category: "TV/Monitor",
-    brand: "BenQ",
-    description: "What is a product description? A product...",
-    price: "$499",
-  },
-];
-
-const Table = () => {
+const Table = ({ books }) => {
   return (
     <div className="overflow-x-auto shadow-md">
       <table className="min-w-full divide-y divide-gray-700">
@@ -100,22 +28,20 @@ const Table = () => {
             <th className="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">
               Url
             </th>
-            <th className="px-6 py-3"></th>
           </tr>
         </thead>
         <tbody className="bg-gray-900 divide-y divide-gray-700 text-white">
-          {products.map((product, index) => (
+          {books?.map((book, index) => (
             <tr key={index}>
-              <td className="px-6 py-4">{product.name}</td>
-              <td className="px-6 py-4">{product.category}</td>
-              <td className="px-6 py-4">{product.brand}</td>
-              <td className="px-6 py-4">{product.description}</td>
-              <td className="px-6 py-4">{product.price}</td>
-              <td className="px-6 py-4">{product.price}</td>
-              <td className="px-6 py-4">{product.price}</td>
-              <button>Edit</button>
-
-              <button>Delete</button>
+              <td className="px-6 py-4">{book.title}</td>
+              <td className="px-6 py-4">{book.author}</td>
+              <td className="px-6 py-4">{book.stock}</td>
+              <td className="px-6 py-4">{book.desc}</td>
+              <td className="px-6 py-4">{book.price}</td>
+              <td className="px-6 py-4">{book.genre}</td>
+              <td className="px-6 py-4">
+                {book.url instanceof File ? book.url.name : book.url}
+              </td>
             </tr>
           ))}
         </tbody>

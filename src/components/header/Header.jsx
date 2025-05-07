@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import Popup from "../popup/Popup";
 
-const Header = () => {
-  let [add, setAdd] = useState(false);
+const Header = ({ addBook }) => {
+  let [showPopup, setShowPopup] = useState(false);
 
   return (
-    <header className="w-full bg-gray-700">
-      <div className="container mx-auto">
-        <nav className="h-[74px] flex items-center">
-          <div className="w-full flex justify-between items-center">
-            <h1 className="text-white font-[500]">Books</h1>
-            <button
-              onClick={() => setAdd(true)}
-              className="w-[150px] h-[50px] bg-[#2563eb] rounded-[50px] hover:bg-blue-700 text-white font-[500]">
-              <a href="#">
-                <span>Add Books</span>
-              </a>
-            </button>
-          </div>
-        </nav>
+    <header className="w-full h-[70px] bg-gray-700">
+      <div className="w-full h-full flex justify-between items-center px-5">
+        <h1 className="text-white font-[500]">Books Store Management</h1>
+        <button
+          onClick={() => setShowPopup(true)}
+          className="w-[150px] h-[50px] bg-[#2563eb] rounded-[5px] hover:bg-blue-700 text-white font-[500]">
+          <a href="#">
+            <span>Add Books</span>
+          </a>
+        </button>
       </div>
-      {add && <Popup setAdd={setAdd} />}
+
+      {showPopup && <Popup addBook={addBook} setShowPopup={setShowPopup} />}
     </header>
   );
 };
